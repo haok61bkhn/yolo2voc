@@ -102,9 +102,9 @@ class YoloReader:
 
         # print (self.classes)
 
-        imgSize = [image.height(), image.width(),
-                      1 if image.isGrayscale() else 3]
-
+       # imgSize = [image.height(), image.width(),
+       #               1 if image.isGrayscale() else 3]
+        imgSize=list(image.shape)
         self.imgSize = imgSize
 
         self.verified = False

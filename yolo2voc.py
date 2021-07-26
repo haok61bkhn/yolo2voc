@@ -3,11 +3,11 @@ from pascal_voc_io import PascalVocWriter
 from yolo_io import YoloReader
 import os.path
 import sys
-
-try:
-    from PyQt5.QtGui import QImage
-except ImportError:
-    from PyQt4.QtGui import QImage
+import cv2
+#try:
+#    from PyQt5.QtGui import QImage
+#except ImportError:
+#    from PyQt4.QtGui import QImage
 
 
 imgFolderPath = sys.argv[1]
@@ -22,10 +22,10 @@ for file in os.listdir(imgFolderPath):
         imagePath = os.path.join(imgPath, annotation_no_txt + ".jpg")
 
         print("Load this image:", imagePath)
-
-        image = QImage()
-        image.load(imagePath)
-        imageShape = [image.height(), image.width(), 1 if image.isGrayscale() else 3]
+        image=cv2.imread(imagePath)
+        #image = QImage()
+        #image.load(imagePath)
+        imageShape = list(image.shape)
         imgFolderName = os.path.basename(imgFolderPath)
         imgFileName = os.path.basename(imagePath)
 
